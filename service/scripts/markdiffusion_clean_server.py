@@ -31,9 +31,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from markdiffusion_harness import (
     DEFAULT_MODEL,
-    _Unavailable,
     _import_markdiffusion,
     _load_diffusion,
+    _Unavailable,
     resolve_device,
     resolve_upstream,
 )
@@ -63,7 +63,7 @@ def _run_clean(data: bytes, name: str, options: dict[str, Any]) -> tuple[int, di
     suffix = Path(name).suffix.lower() or ".png"
     with tempfile.TemporaryDirectory(prefix="wm-markdiffusion-") as tmp:
         src_path = Path(tmp) / f"input{suffix}"
-        out_path = Path(tmp) / f"output.png"
+        out_path = Path(tmp) / "output.png"
         src_path.write_bytes(data)
 
         device = resolve_device(device_hint)
